@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class Tester {
-    public static void start(Class clazz) throws InvocationTargetException, IllegalAccessError {
+    public static void start(Class clazz) throws InvocationTargetException, IllegalAccessError, IllegalAccessException {
         Method beforeMethod = null;
         Method afterMethod = null;
         ArrayList <Method> testMethods = new ArrayList<>();
@@ -23,7 +23,7 @@ public class Tester {
         }
         for (Method m : clazz.getDeclaredMethods()){
             if (m.isAnnotationPresent(Test.class)){
-                testMethod.add(m);
+                testMethods.add(m);
             }else if(m.isAnnotationPresent(BeforeSuite.class)){
                 if ((beforeMethod == null)){
                     beforeMethod = m;
